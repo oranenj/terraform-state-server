@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-sqlite3 states.db < tests/init.sql
+# Run on localhost port 8080
 terraform-state-server sqlite://states.db 8080
 ```
 See tests/state.tf for an example of how to configure it

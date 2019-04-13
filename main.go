@@ -45,7 +45,7 @@ func db_get(path string) (string, error) {
 }
 
 func db_get_lock(path string) (string, error) {
-	logstd.Println("Returning data for", path)
+	logstd.Println("GET", path)
 	var value string
 	row := db.QueryRow("SELECT lockid from states WHERE path = $1", path)
 	err := row.Scan(&value)
@@ -130,9 +130,6 @@ func request_handler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			io.WriteString(w, value)
 		}
-		return
-	case "DELETE":
-		logstd.Println("DELETE")
 		return
 	case "POST":
 		lockid := ""
