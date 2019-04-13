@@ -7,9 +7,8 @@ touch first-failed server-failed
 (cd ..; make)
 set +e
 rm -f test.db first-failed server-failed
-sqlite3 test.db < init.sql
 ../terraform-state-server sqlite://test.db 8080 || touch server-failed &
-sleep 2
+sleep 1
 if [ -f "server-failed" ]; then
 	echo "Server run failed"
 	exit 1

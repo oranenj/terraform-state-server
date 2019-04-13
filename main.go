@@ -23,9 +23,15 @@ var db *sql.DB
 func init_db() {
 	x, err := dburl.Open(os.Args[1])
 	if err != nil {
-		logerr.Fatal("Failed to initialize DB driver: ", err)
+		logerr.Fatal("Failed to initialize DB driver:", err)
 	}
 	db = x
+
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS states (path TEXT PRIMARY KEY NOT NULL, value TEXT, lockid TEXT)")
+
+	if err != nil {
+		logerr.Fatal("Could not initialize database:", err)
+	}
 }
 
 func db_get(path string) (string, error) {
