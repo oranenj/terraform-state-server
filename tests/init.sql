@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS states (path TEXT PRIMARY KEY NOT NULL, value TEXT, lockid TEXT);
