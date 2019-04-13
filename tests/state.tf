@@ -1,8 +1,8 @@
 terraform {
   backend "http" {
-    address = "http://localhost:8080/"
-    lock_address = "http://localhost:8080/"
-    unlock_address = "http://localhost:8080/"
+    address = "http://localhost:8080/my/state.tf"
+    lock_address = "http://localhost:8080/my/state.tf"
+    unlock_address = "http://localhost:8080/my/state.tf"
   }
 }
 

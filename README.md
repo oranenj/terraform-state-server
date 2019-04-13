@@ -4,10 +4,11 @@
 
 ```
 sqlite3 states.db < tests/init.sql
-terraform-state-server sqlite://states.db
+terraform-state-server sqlite://states.db 8080
 ```
+See tests/state.tf for an example of how to configure it
 
-The state server will listen to requests on 127.0.0.1:8080. Use a HTTP proxy with authentication to secure it.
-
+The state server will listen to requests on 127.0.0.1 on the specified port, and this is intentionally not configurable. 
+Use a HTTP proxy with authentication to secure it.
 
 Note: this has been only very lightly tested, but seems to work fine.

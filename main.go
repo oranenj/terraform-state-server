@@ -168,8 +168,10 @@ func request_handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", request_handler)
-	log.Println("Serving...")
+	bind := fmt.Sprintf("127.0.0.1:%s", os.Args[2])
+	log.Println("Connecting to database on", os.Args[1])
 	init_db()
 	db.Ping()
-	log.Fatal(http.ListenAndServe("127.0.0.1:8080", nil))
+	log.Println("Starting server on", bind)
+	log.Fatal(http.ListenAndServe(bind, nil))
 }
